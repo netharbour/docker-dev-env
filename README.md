@@ -9,7 +9,7 @@ A docker based development environment for Netharbour
 
 ### Install
 1. `git clone https://github.com/netharbour/docker-dev-env.git`
-2. `git clone https://github.com/netharbour/netharbour.git docker-dev-env/src/netharbour-app/`
+2. `git clone https://github.com/netharbour/netharbour.git docker-dev-env/src/netharbour-app/netharbour`
 
 ### (Optional) Configuration
 * Edit netharbour configuration files that are bind mounted into the netharbour codebase (`docker-dev-env/src/netharbour-app/netharbour-conf`)
