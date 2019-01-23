@@ -1,0 +1,2 @@
+# set default language to English. Prevents chrome from attempting to translate if it thinks it detects non-english words
+Header set Content-Language en

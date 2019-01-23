@@ -1,0 +1,56 @@
+version: '3.7'
+
+networks:
+  frontend:
+  backend:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/24
+
+volumes:
+  netharbour-app:
+  netharbour-db:
+  netharbour-rrd:
+
+services:
+
+  netharbour-app:
+    build:
+      args:
+        UID: ${USER_ID}
+        GID: ${GROUP_ID}
+        NAME: ${UNAME}
+      context: './src/netharbour-app/'
+    container_name: 'netharbour-app'
+    depends_on:
+    - netharbour-db
+    image: netharbour-app:0.1
+    init: true
+    ports:
+    - "127.0.0.1:443:443"
+    network_mode: "host"
+    volumes:
+      - type: volume
+        source: netharbour-rrd
+        target: /opt/netharbour/rrd-files
+      - type: bind
+        source: ./src/netharbour-app/netharbour-conf
+        target: /var/www/html/netharbour/config
+      - type: bind
+        source: ./src/netharbour-app/netharbour
+        target: /var/www/html/netharbour
+
+  netharbour-db:
+    build: './src/netharbour-db/'
+    container_name: 'netharbour-db'
+    env_file: temp/db-vars.env
+    image: netharbour-db:0.1
+    networks:
+      backend:
+        ipv4_address: 172.20.0.2
+    volumes:
+      - type: volume
+        source: netharbour-db
+        target: /var/lib/mysql
