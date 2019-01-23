@@ -36,4 +36,4 @@ A docker based development environment for Netharbour
 * The netharbour/ codebase directory is bind mounted to /var/www/html/. No rebuilding of the netharbour image is needed between code changes.
 * The database container will always mount with ip 172.20.0.2. Useful for reliably connecting an IDE to the database.
 * The RRD files live in a docker volume which is mounted to /opt/netharbour/rrd-files in the netharbour-app container.
-* The netharbour-app container uses host networking, so ensure your development machine ran reach your test network devices for polling.
+* The netharbour-app container uses host networking, so ensure your development machine can reach your test network devices for polling.
