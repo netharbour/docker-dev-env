@@ -68,8 +68,8 @@ COPY ./system-conf/.htaccess /var/www/html/netharbour/.htaccess
 # Cron
 # variable substitution for -- flags not supported yet. https://github.com/moby/moby/issues/35018
 ## for now, statically set uid:gid. Should use vars in future though
-COPY --chown=netharbour:netharbour system-conf/crontab.netharbour /var/spool/cron/netharbour
-RUN chmod 600 /var/spool/cron/netharbour
+COPY --chown=root:root system-conf/crontab.root /var/spool/cron/root
+RUN chmod 600 /var/spool/cron/root
 
 # Netharbour App
 # variable substitution for -- flags not supported yet. https://github.com/moby/moby/issues/35018

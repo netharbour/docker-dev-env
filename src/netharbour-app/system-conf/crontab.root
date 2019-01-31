@@ -12,8 +12,7 @@
 ############################
 
 # Plugin dispatcher
-* * * * * cd /var/www/html/netharbour/; ./perl/plugin_dispatcher.pl
+* * * * * su netharbour -c "cd /var/www/html/netharbour/; ./perl/plugin_dispatcher.pl" > /proc/$(cat /var/run/crond.pid)/fd/1 2>&1
 
 # Service check dispatcher
-* * * * * cd /var/www/html/netharbour/; ./perl/event_check_dispatcher.pl
-
+* * * * * su netharbour -c "cd /var/www/html/netharbour/; ./perl/event_check_dispatcher.pl" > /proc/$(cat /var/run/crond.pid)/fd/1 2>&1
