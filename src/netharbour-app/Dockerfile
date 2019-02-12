@@ -27,6 +27,7 @@ RUN yum install -y cronie                   \
         mod_authz_ldap.x86_64               \
         mod_ssl                             \
     	net-snmp-utils                      \
+    	npm                                 \
     	perl                                \
     	"perl(Config::Simple)"              \
         "perl(Data::Validate::Domain)"      \
@@ -53,6 +54,9 @@ RUN yum install -y cronie                   \
     	rrdtool-perl                        \
     	yum --enablerepo=gf-plus install -y postfix3 \
     	&& yum clean all
+
+# install time-elapsed benchmarking utility
+RUN npm install -g gnomon
 
 # Supervisor setup (multiple process control)
 RUN mkdir -p /var/log/supervisor && \

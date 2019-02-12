@@ -32,6 +32,10 @@ A docker based development environment for Netharbour
 * `supervisorctl status`
 * `supervisorctl restart httpd`
 
+###### Run benchmarking on individual perl scripts _(gnomon is similar to ts, but allows for time deltas based on stdout)_
+* `cd /var/www/html/netharbour`
+* `./plugins/SNMP_Poller/snmp_poller.pl -d 1 | gnomon`
+
 ### Development Notes
 * The netharbour/ codebase directory is bind mounted to /var/www/html/. No rebuilding of the netharbour image is needed between code changes.
 * The database container will always mount with ip 172.20.0.2. Useful for reliably connecting an IDE to the database.
