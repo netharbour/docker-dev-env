@@ -34,13 +34,14 @@ RUN yum install -y cronie                   \
         "perl(Data::Validate::IP)"          \
         "perl(DBD::mysql)"                  \
         "perl(DBI)"                         \
+        "perl(JSON)"                        \
+        "perl(LWP::Protocol::https)"        \
         "perl(LWP::UserAgent)"              \
         "perl(Net::IP)"                     \
         "perl(Net::SNMP)"                   \
         "perl(NetAddr::IP::Util)"           \
         "perl(Module::Build)"               \
         "perl(Time::HiRes)"                 \
-        "perl(XML::LibXML)"                 \
     	php                                 \
     	php-bcmath                          \
     	php-ldap.x86_64                     \
