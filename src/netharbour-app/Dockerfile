@@ -23,12 +23,16 @@ RUN yum install -y epel-release && \
 RUN yum -y update && yum clean all
 
 RUN yum install -y cronie                   \
+        gcc                                 \
         httpd                               \
+        libssh2                             \
+        libssh2-devel                       \
         mod_authz_ldap.x86_64               \
         mod_ssl                             \
     	net-snmp-utils                      \
     	npm                                 \
     	perl                                \
+    	perl-core                           \
     	"perl(Config::Simple)"              \
         "perl(Data::Validate::Domain)"      \
         "perl(Data::Validate::IP)"          \
@@ -55,6 +59,14 @@ RUN yum install -y cronie                   \
     	rrdtool-perl                        \
     	yum --enablerepo=gf-plus install -y postfix3 \
     	&& yum clean all
+
+# install cpanminus
+RUN curl -L https://cpanmin.us | perl - --self-upgrade
+
+# install cpan packages that doesn't exist in centos repo
+RUN cpanm File::Which
+RUN cpanm XML::LibXML
+RUN cpanm Net::Netconf
 
 # install time-elapsed benchmarking utility
 RUN npm install -g gnomon
