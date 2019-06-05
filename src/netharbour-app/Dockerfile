@@ -90,11 +90,11 @@ RUN chmod 600 /var/spool/cron/root
 
 # Netharbour App
 # variable substitution for -- flags not supported yet. https://github.com/moby/moby/issues/35018
-COPY --chown=netharbour:netharbour ./netharbour /var/www/html/netharbour
+COPY --chown=1000:1000 ./netharbour /var/www/html/netharbour
 
 # RRD volume ownership (create volume and chown it before it's mounted)
 # variable substitution for -- flags not supported yet. https://github.com/moby/moby/issues/35018
 RUN mkdir -p /opt/netharbour/rrd-files && \
-    chown -R netharbour:netharbour /opt/netharbour
+    chown -R 1000:1000 /opt/netharbour
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
