@@ -1,7 +1,6 @@
 version: '3.7'
 
 networks:
-  frontend:
   backend:
     driver: bridge
     ipam:
@@ -29,8 +28,10 @@ services:
     image: netharbour-app:0.6
     init: true
     ports:
-    - "127.0.0.1:443:443"
-    network_mode: "host"
+    - "443:443"
+    networks:
+      backend:
+        ipv4_address: 172.20.0.3
     volumes:
       - type: volume
         source: netharbour-rrd
