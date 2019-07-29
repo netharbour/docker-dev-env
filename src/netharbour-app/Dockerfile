@@ -29,6 +29,7 @@ RUN yum install -y cronie                   \
         libssh2-devel                       \
         mod_authz_ldap.x86_64               \
         mod_ssl                             \
+        net-snmp                            \
     	net-snmp-utils                      \
     	npm                                 \
     	perl                                \
