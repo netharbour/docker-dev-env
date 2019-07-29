@@ -29,6 +29,7 @@ RUN yum install -y cronie                   \
         libssh2-devel                       \
         mod_authz_ldap.x86_64               \
         mod_ssl                             \
+        net-snmp                            \
     	net-snmp-utils                      \
     	npm                                 \
     	perl                                \
@@ -81,6 +82,7 @@ COPY ./system-conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY ./system-conf/httpd.conf /etc/httpd/conf/httpd.conf
 COPY ./system-conf/main.cf /etc/postfix/main.cf
 COPY ./system-conf/.htaccess /var/www/html/netharbour/.htaccess
+COPY ./system-conf/snmpd.conf /etc/snmp/snmpd.conf
 
 # Cron
 # variable substitution for -- flags not supported yet. https://github.com/moby/moby/issues/35018

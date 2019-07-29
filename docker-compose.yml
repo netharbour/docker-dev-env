@@ -25,7 +25,7 @@ services:
     container_name: 'netharbour-app'
     depends_on:
     - netharbour-db
-    image: netharbour-app:0.6
+    image: netharbour-app:0.7
     init: true
     ports:
     - "443:443"
